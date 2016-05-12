@@ -4,7 +4,7 @@ ENV CC /usr/bin/clang
 ENV CXX /usr/bin/clang++
 
 RUN echo -e '@edge http://nl.alpinelinux.org/alpine/edge/main\n@testing http://nl.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories \
-	&& apk add --update make cmake gcc g++ git pkgconf python unzip wget build-base gsl libavc1394-dev libtbb@testing libtbb-dev@testing libjpeg libjpeg-turbo-dev libpng-dev libjasper libdc1394-dev clang tiff-dev libwebp-dev linux-headers imagemagick \
+	&& apk add --update make cmake gcc g++ git pkgconf python unzip wget build-base gsl libavc1394-dev libtbb@testing libtbb-dev@testing libjpeg libjpeg-turbo-dev libpng-dev libjasper libdc1394-dev clang tiff-dev libwebp-dev py-numpy-dev@testing py-scipy-dev@testing linux-headers imagemagick \
 	&& mkdir /opt && cd /opt \
   && wget --no-check-certificate https://github.com/Itseez/opencv/archive/3.1.0.zip \
   && unzip 3.1.0.zip \
@@ -20,7 +20,7 @@ RUN echo -e '@edge http://nl.alpinelinux.org/alpine/edge/main\n@testing http://n
   && cd /src \
   && PKG_CONFIG_PATH=~/opencv/lib/pkgconfig/ npm install opencv && npm install  \
   && npm install nodemon cwebp-bin -g \
-  && apk del make cmake gcc g++ git pkgconf unzip wget build-base gsl libavc1394-dev libtbb libtbb-dev libjasper libdc1394-dev clang linux-headers \
+  && apk del make cmake gcc g++ git pkgconf unzip wget build-base gsl libavc1394-dev libtbb libtbb-dev libjasper libdc1394-dev clang py-numpy-dev py-scipy-dev linux-headers \
   && rm -rf /opt/opencv-3.1.0 && rm -rf ~/opencv \
   && rm -rf /var/cache/apk/*
 

@@ -1,6 +1,6 @@
 FROM siomiz/node-opencv:latest
 
-RUN sudo apt-get update && sudo apt-get install imagemagick\
+RUN apt-get update && apt-get install imagemagick\
   && npm install nodemon -g 
 
 WORKDIR /src

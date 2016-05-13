@@ -1,7 +1,6 @@
-FROM mhart/alpine-node:latest
+FROM node:latest
 
-RUN apk --update add make git gcc g++ python \
-	&& npm install nodemon -g
+RUN npm install nodemon -g
 
 WORKDIR /src
 
